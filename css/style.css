@@ -1,0 +1,49 @@
+body {
+margin: 0;
+padding: 0;
+font-family: "メイリオ";
+line-height: 2;
+}
+h1 {
+font-size: 1rem;
+}
+button {
+border-radius: 50%;
+border: none;
+width: 200px;
+height: 200px;
+background-color: aqua;
+box-shadow: 0 5px blue;
+font-size: 40px;
+color: darkcyan;
+cursor: pointer;
+}
+button:active {
+position: relative;
+top: 7px;
+box-shadow: none;
+}
+#click {
+font-size: 1rem;
+font-weight: bold;
+}
+#click i {
+font-size: 1.5rem;
+}
+small {
+font-size: 11px;
+font-weight: normal;
+}
+ol {
+padding: 0;
+border-bottom: 1px solid #ccc;
+}
+li {
+border-top: 1px solid #ccc;
+border-bottom: none;
+list-style: none;
+user-select: none;
+cursor: default;
+font-weight: bold;
+opacity: .3;
+}
