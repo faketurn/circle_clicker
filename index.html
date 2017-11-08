@@ -13,10 +13,14 @@ amount++
 document.getElementById('click').getElementsByTagName('i')[0].innerHTML = amount
 document.getElementById('finger_i').innerHTML = finger
 }
-function finger() {
-alert("kjkfjdk")
+function fin() {
+if (amount < finger) {
+    return
+}
 amount -= finger
 document.getElementById('click').getElementsByTagName('i')[0].innerHTML = amount
+finger++
+document.getElementById('finger_i').innerHTML = finger
 }
 </script>
 </head>
@@ -28,7 +32,7 @@ document.getElementById('click').getElementsByTagName('i')[0].innerHTML = amount
 
 <h2>Shop <small>あなたのクリックを肩代わり</small></h2>
 <ol>
-<button id="finger" title="1秒あたり0.1回クリック" onclick="finger();"><i id="finger_i">15</i><small>クリック</small> 指先</button>
+<li id="finger" title="1秒あたり0.1回クリック" onclick="fin();"><i id="finger_i">15</i><small>クリック</small> 指先</li>
 <li id="granma" title="1秒あたり1回クリック"><i id="granma_i">100</i><small>クリック</small> おばあさん</li>
 <li id="farm" title="1秒あたり17回クリック"><i id="farm_i">670</i><small>クリック</small> 農場</li>
 <li id="factory" title="1秒あたり120回クリック"><i id="factory_i">9300</i><small>クリック</small> 工場</li>
