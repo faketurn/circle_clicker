@@ -1,5 +1,5 @@
 body {
-margin: 0;
+margin: 2rem;
 padding: 0;
 font-family: "メイリオ";
 line-height: 2;
@@ -36,14 +36,19 @@ font-weight: normal;
 }
 ol {
 padding: 0;
-border-bottom: 1px solid #ccc;
 }
 li {
-border-top: 1px solid #ccc;
-border-bottom: none;
+  padding: .3rem .5rem;
+border: 5px solid #666;
+border-bottom-color: #333;
 list-style: none;
 user-select: none;
+-moz-user-select: none;
 cursor: default;
 font-weight: bold;
 opacity: .3;
+}
+li:hover {
+  border-color: #ccc;
+  border-bottom-color: #999;
 }

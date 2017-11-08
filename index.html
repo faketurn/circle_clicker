@@ -5,15 +5,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Circle Clicker</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="javascript" href="js/clicker.js">
+</head>
+<body>
+<h1>Circle Clicker</h1>
+
+<button id="clickbutton">Click!</button>
+<p id="click"><i>0</i> クリック</p>
+
+<h2>Shop <small>あなたのクリックを肩代わり</small></h2>
+<ol>
+<li id="finger" title="1秒あたり0.1回クリック"><i id="finger_i">15</i><small>クリック</small> 指先</li>
+<li id="granma" title="1秒あたり1回クリック"><i id="granma_i">100</i><small>クリック</small> おばあさん</li>
+<li id="farm" title="1秒あたり17回クリック"><i id="farm_i">670</i><small>クリック</small> 農場</li>
+<li id="factory" title="1秒あたり120回クリック"><i id="factory_i">9300</i><small>クリック</small> 工場</li>
+</ol>
+
+
+
 <script type="text/javascript">
+
 var amount = 0;
 var finger = 15;
-function counter() {
+
+function clickCounter() {
 amount++
 document.getElementById('click').getElementsByTagName('i')[0].innerHTML = amount
-document.getElementById('finger_i').innerHTML = finger
+// document.getElementById('finger_i').innerHTML = finger
+console.log(document.getElementById('finger_i').innerHTML)
+if (document.getElementById('finger_i').innerHTML <= amount) {
+    var fi = document.getElementById('finger')
+    fi.style.opacity = '1'
+    fi.style.cursor = 'pointer'
+    fi.style.background = '#eee'
 }
-function fin() {
+}
+var el_clickbutton = document.getElementById('clickbutton')
+el_clickbutton.addEventListener('click', clickCounter, false)
+
+
+function clickFinger() {
 if (amount < finger) {
     return
 }
@@ -21,21 +52,17 @@ amount -= finger
 document.getElementById('click').getElementsByTagName('i')[0].innerHTML = amount
 finger++
 document.getElementById('finger_i').innerHTML = finger
+if (document.getElementById('finger_i').innerHTML > amount) {
+    var fi = document.getElementById('finger')
+    fi.style.opacity = '.3'
+    fi.style.cursor = 'default'
 }
+}
+var el_clickfinger = document.getElementById('finger')
+el_clickfinger.addEventListener('click', clickFinger, false)
+
+
+
 </script>
-</head>
-<body>
-<h1>Circle Clicker</h1>
-
-<button onclick="counter();">Click!</button>
-<p id="click"><i>0</i> クリック</p>
-
-<h2>Shop <small>あなたのクリックを肩代わり</small></h2>
-<ol>
-<li id="finger" title="1秒あたり0.1回クリック" onclick="fin();"><i id="finger_i">15</i><small>クリック</small> 指先</li>
-<li id="granma" title="1秒あたり1回クリック"><i id="granma_i">100</i><small>クリック</small> おばあさん</li>
-<li id="farm" title="1秒あたり17回クリック"><i id="farm_i">670</i><small>クリック</small> 農場</li>
-<li id="factory" title="1秒あたり120回クリック"><i id="factory_i">9300</i><small>クリック</small> 工場</li>
-</ol>
 </body>
 </html>
