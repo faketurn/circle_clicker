@@ -1,0 +1,82 @@
+
+
+<button id="count">click</button>
+<p id="text">0</p>
+<p id="wait"></p>
+
+
+<script type="text/javascript">
+var amount = 1000
+wait = 200 / amount
+
+function setTimeCount() {
+    var p = document.getElementById('text')
+    console.log(p.innerHTML < amount)
+    document.getElementById('wait').innerHTML = wait
+    if (p.innerHTML < amount) {
+        p.innerHTML++
+    } else {
+        return
+    }
+    setTimeout('setTimeCount()', 0)
+}
+
+
+(function() {
+    var timeouts = [];
+    var messageName = "zero-timeout-message";
+
+    function setZeroTimeout(fn) {
+        timeouts.push(fn);
+        window.postMessage(messageName, "*");
+    }
+
+    function handleMessage(event) {
+        if (event.source == window && event.data == messageName) {
+            event.stopPropagation();
+            if (timeouts.length > 0) {
+                var fn = timeouts.shift();
+                fn();
+            }
+        }
+    }
+
+    window.addEventListener("message", handleMessage, true);
+
+    window.setZeroTimeout = setZeroTimeout;
+})();
+
+function zeroCount(e, num, bool) {
+    var i = 0;
+    function timeOut() {
+        if (++i == num) {
+            i = 0;
+        } else {
+            setZeroTimeout(timeOut);
+            console.log(e)
+            if (bool) {
+                e.innerHTML++
+            } else {
+                e.innerHTML--
+            }
+            
+        }
+    }
+
+    setZeroTimeout(timeOut);
+}
+
+function runCount() {
+    if (amount > 100) {
+        var e = document.getElementById('text')
+        zeroCount(e, 15, false)
+    } else {
+        setTimeCount()
+    }
+}
+
+
+
+var el = document.getElementById('count')
+el.addEventListener('click', runCount, false)
+</script>

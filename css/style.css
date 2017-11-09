@@ -1,10 +1,14 @@
 body {
-margin: 2rem;
+margin: 0 2rem;
 padding: 0;
 font-family: "メイリオ";
 line-height: 2;
 }
 h1 {
+float: right;
+font-size: .9rem;
+}
+h2 {
 font-size: 1rem;
 }
 button {
@@ -24,6 +28,8 @@ top: 7px;
 box-shadow: none;
 }
 #click {
+text-align: right;
+width: 200px;
 font-size: 1rem;
 font-weight: bold;
 }

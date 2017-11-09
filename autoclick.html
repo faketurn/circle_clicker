@@ -1,0 +1,36 @@
+
+
+
+<p id="click"><i>0</i> クリック</p>
+<button id="clickbutton">Click!</button>
+
+
+<script type="text/javascript">
+
+var amount = 0;
+var finger = 15;
+var finNum = 2;
+
+function setTimeCount() {
+    var el = document.getElementById('click').getElementsByTagName('i')[0]
+    el.innerHTML = parseInt(el.innerHTML,10) + finNum
+    setTimeout('setTimeCount()', 1000)
+}
+
+function clickCounter() {
+    setTimeCount()
+    amount++
+    document.getElementById('click').getElementsByTagName('i')[0].innerHTML = amount
+    // document.getElementById('finger_i').innerHTML = finger
+    console.log(document.getElementById('finger_i').innerHTML)
+    if (document.getElementById('finger_i').innerHTML <= amount) {
+        var fi = document.getElementById('finger')
+        fi.style.opacity = '1'
+        fi.style.cursor = 'pointer'
+        fi.style.background = '#eee'
+    }
+}
+
+var el_clickbutton = document.getElementById('clickbutton')
+el_clickbutton.addEventListener('click', clickCounter, false)
+</script>
